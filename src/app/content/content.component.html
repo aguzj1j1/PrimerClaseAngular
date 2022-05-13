@@ -1,4 +1,4 @@
-<section class="container">
+<!-- <section class="container">
   <div class="row">
     <div class="col-md-4 col-xs-12">
       <div class="card" style="width: 18rem;">
@@ -67,4 +67,14 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
+<button tyle="button" class="btn btn-primary"> primary</button>
+<div *ngFor="let persona of listPeoples">
+    <p [ngClass]="persona.mayorDeEdad ? 'verde':'rojo'">
+        {{persona.nombre | uppercase}}
+    </p>
+
+  </div>
+<p>
+
+</p>
