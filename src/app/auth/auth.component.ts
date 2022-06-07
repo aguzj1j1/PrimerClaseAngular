@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/users.service';
 import { UserAuth } from '../models/users.model';
 import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -13,7 +14,7 @@ export class AuthComponent implements OnInit {
   errorMessage: any;
   formLogin: any;
   ActualUser: UserAuth[];
-
+  observable: Observable<any>;
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -25,6 +26,13 @@ export class AuthComponent implements OnInit {
       Username: ['', Validators.required],
       Password: ['', Validators.required],
     });
+    const array = [1, 2, 3, 4, 5, 6, 7];
+    this.observable = of(array);
+    this.observable.subscribe(
+      (val) => console.log(val),
+      (error) => console.log(error),
+      () => console.log('complete')
+    );
   }
 
   onSubmit() {
@@ -54,7 +62,7 @@ export class AuthComponent implements OnInit {
   checkIsUserWithPromise(userName: string, password: string): boolean {
     this.userService.getListUserPromise(userName, password).then((val) => {
       this.ActualUser = val;
-    })
+    });
 
     if (this.ActualUser.length > 0) {
       return true;

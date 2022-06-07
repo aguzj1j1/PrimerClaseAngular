@@ -1,7 +1,7 @@
 <div class="row m-0 w-100">
   <div class="col-md-4 col-lg-6 col-lg-offset-6 mt-5" *ngIf="!this.isLogin">
     <h4>Login</h4>
-    <h4>bienvenido!! </h4>
+    <h4 *ngIf="observable|async">bienvenido!! </h4>
     <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <input class="form-control" type="text" name="username" placeholder="Username"  formControlName="Username">
