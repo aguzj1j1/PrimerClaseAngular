@@ -9,7 +9,7 @@ import { ViewStudentsComponent } from './view-students/view-students.component';
 const routes: Routes = [
   { path:'auth', component:AuthComponent},
   {path: 'students', component: ListStudentsComponent},
-  {path: 'students/view/{id}', component: ViewStudentsComponent}
+  {path: 'students/view/:id', component: ViewStudentsComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
