@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SidemenuComponent } from '../sidemenu/sidemenu.component';
+
 @Component({
   selector: 'app-view-students',
   templateUrl: './view-students.component.html',
