@@ -1,35 +1,30 @@
-<nav class="nav-Custom">
-  <div class="d-flex flex-column flex-shrink-0 p-3  bg-green navbar-sidebar">
-    <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">
-          <svg class="bi me-2" width="16" height="16"></svg>
-          Gráficos
-        </a>
-      </li>
-      <hr>
-      <li>
-        <a href="#" class="nav-link text-black">
-          <svg class="bi me-2" width="16" height="16"></svg>
-          Ubicaciones
-        </a>
-      </li>
-      <hr>
-      <li>
-        <a href="#" class="nav-link text-black">
-          <svg class="bi me-2" width="16" height="16"></svg>
-          Salud
-        </a>
-      </li>
-      <hr>
-      <li>
-        <a href="#" class="nav-link text-black">
-          <svg class="bi me-2" width="16" height="16"></svg>
-          Configuración
-        </a>
-      </li>
-      <hr>
-    </ul>
-  </div>
-</nav>
+<mat-toolbar color="primary" class="example-toolbar">
+  <button mat-icon-button (click)="isExpanded = !isExpanded">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1 class="example-app-name text-center">Nested Menus</h1>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container" autosize>
+  <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()"
+    (mouseleave)="mouseleave()">
+    <mat-nav-list>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+        <span class="full-width" *ngIf="isExpanded || isShowing">Alumnos</span>
+        <mat-icon mat-list-icon>school</mat-icon>
+
+      </mat-list-item>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+        <span class="full-width" *ngIf="isExpanded || isShowing">Cursos</span>
+        <mat-icon mat-list-icon>book</mat-icon>
+      </mat-list-item>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+        <span class="full-width" *ngIf="isExpanded || isShowing">Inscripciones</span>
+        <mat-icon mat-list-icon>edit_note</mat-icon>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list> </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="example-sidenav-content">Main content that resizes properly</div>
+</mat-sidenav-container>

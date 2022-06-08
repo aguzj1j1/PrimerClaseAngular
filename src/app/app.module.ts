@@ -17,8 +17,10 @@ import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,9 +42,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatTableModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    BrowserAnimationsModule,MatToolbarModule,MatSidenavModule,MatListModule
   ],
-  exports:[ MatTableModule ],
+  exports:[ MatTableModule,MatToolbarModule,MatSidenavModule,MatListModule,SidemenuComponent ],
   providers: [],
   bootstrap: [AppComponent]
 })
