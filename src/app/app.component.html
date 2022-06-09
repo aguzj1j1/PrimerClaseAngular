@@ -1,15 +1,31 @@
-<!-- <div class="wrapper"> -->
-  <!-- <app-header class="header"></app-header>
-  <app-sidemenu class="sidemenu"></app-sidemenu> -->
+<!-- <mat-toolbar color="primary" class="example-toolbar">
+  <button mat-icon-button (click)="isExpanded = !isExpanded">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1 class="example-app-name text-center">Nested Menus</h1>
+</mat-toolbar>
 
-  <!--
-    <app-nested-component1-component></app-nested-component1-component>
-    <app-nested-component2-component></app-nested-component2-component> -->
-  <!-- <div class="row">
-    <div class="col-md-9 col-md-offset-3 text-center">
-      <app-auth class=""></app-auth>
-    </div>
-  </div> -->
-  <!-- <router-outlet></router-outlet> -->
-<!-- </div> -->
+<mat-sidenav-container class="example-container" autosize>
+  <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()"
+    (mouseleave)="mouseleave()">
+    <mat-nav-list>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+        <span class="full-width" *ngIf="isExpanded || isShowing">Alumnos</span>
+        <mat-icon mat-list-icon>school</mat-icon>
+
+      </mat-list-item>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+        <span class="full-width" *ngIf="isExpanded || isShowing">Cursos</span>
+        <mat-icon mat-list-icon>book</mat-icon>
+      </mat-list-item>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+        <span class="full-width" *ngIf="isExpanded || isShowing">Inscripciones</span>
+        <mat-icon mat-list-icon>edit_note</mat-icon>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list> </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="example-sidenav-content"></div>
+</mat-sidenav-container> -->
 <router-outlet></router-outlet>

@@ -12,15 +12,12 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ListStudentsComponent } from './list-students/list-students.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
-import { MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
+import { MaterialModule } from './material/material.module';
+import { LayoutModule } from './layout/layout.module';
+import { CursoComponent } from './curso/curso.component';
+import { InscripcionesComponent } from './inscripciones/inscripciones.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,21 +28,20 @@ import {MatListModule} from '@angular/material/list';
     NestedComponent2ComponentComponent,
     EmployeelistComponent,
     AuthComponent,
-    ListStudentsComponent
+    ListStudentsComponent,
+    CursoComponent,
+    InscripcionesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    BrowserAnimationsModule,MatToolbarModule,MatSidenavModule,MatListModule
+    BrowserAnimationsModule,
+    MaterialModule,
+    LayoutModule
   ],
-  exports:[ MatTableModule,MatToolbarModule,MatSidenavModule,MatListModule,SidemenuComponent ],
+  exports:[SidemenuComponent,MaterialModule,LayoutModule ],
   providers: [],
   bootstrap: [AppComponent]
 })

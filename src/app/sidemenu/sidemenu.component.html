@@ -1,30 +1,31 @@
-<mat-toolbar color="primary" class="example-toolbar">
+<mat-toolbar color="primary" class="custom-toolbar">
   <button mat-icon-button (click)="isExpanded = !isExpanded">
     <mat-icon>menu</mat-icon>
   </button>
-  <h1 class="example-app-name text-center">Nested Menus</h1>
+  <h1 class="custom-app-name text-center">Nested Menus</h1>
 </mat-toolbar>
 
-<mat-sidenav-container class="example-container" autosize>
-  <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()"
+<mat-sidenav-container class="custom-container" autosize>
+  <mat-sidenav #sidenav class="custom-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()"
     (mouseleave)="mouseleave()">
     <mat-nav-list>
       <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
-        <span class="full-width" *ngIf="isExpanded || isShowing">Alumnos</span>
+        <span class="full-width" *ngIf="isExpanded || isShowing" [routerLink]="'/students'">Alumnos</span>
         <mat-icon mat-list-icon>school</mat-icon>
 
       </mat-list-item>
       <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
-        <span class="full-width" *ngIf="isExpanded || isShowing">Cursos</span>
+        <span class="full-width" *ngIf="isExpanded || isShowing" [routerLink]="'/course'">Cursos</span>
         <mat-icon mat-list-icon>book</mat-icon>
       </mat-list-item>
       <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
-        <span class="full-width" *ngIf="isExpanded || isShowing">Inscripciones</span>
+        <span class="full-width" *ngIf="isExpanded || isShowing" [routerLink]="'/inscripciones'">Inscripciones</span>
         <mat-icon mat-list-icon>edit_note</mat-icon>
       </mat-list-item>
     </mat-nav-list>
     <mat-nav-list> </mat-nav-list>
   </mat-sidenav>
 
-  <div class="example-sidenav-content">Main content that resizes properly</div>
+  <div class="custom-sidenav-content"><router-outlet></router-outlet>
+  </div>
 </mat-sidenav-container>

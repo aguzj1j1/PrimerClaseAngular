@@ -13,7 +13,7 @@ import { StudentsService } from '../services/students.service';
   templateUrl: './list-students.component.html',
   styleUrls: ['./list-students.component.scss'],
 })
-export class ListStudentsComponent implements OnInit {
+export class ListStudentsComponent  implements OnInit {
   auth: any;
   displayedColumns: string[] = ['name', 'note', 'course', 'email', 'aprobado'];
   admin: boolean;
