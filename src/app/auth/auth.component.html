@@ -1,21 +1,22 @@
-<div class="row m-0 w-100">
-  <div class="col-md-4 col-lg-6 col-lg-offset-6 mt-5" *ngIf="!this.isLogin">
-    <h4>Login</h4>
-    <h4 *ngIf="observable|async">bienvenido!! </h4>
-    <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <input class="form-control" type="text" name="username" placeholder="Username"  formControlName="Username">
-      </div>
+<form>
+  <div class="login-container">
+    <div class="login-content">
+      <mat-toolbar class="login-toolbar" color="primary">Recipe Book</mat-toolbar>
+      <mat-card>
+        <form [formGroup]="formLogin" #formDirective="ngForm" (ngSubmit)="onSubmit()">
+          <mat-form-field>
+            <mat-icon matPrefix>person_outline</mat-icon>
+            <input autofocus type="text" matInput placeholder="Username" formControlName="Username">
+          </mat-form-field>
 
-      <div class="form-group">
-        <input class="form-control" type="password" name="password" placeholder="Password" formControlName="Password" >
-      </div>
-      <input class="btn btn-outline-info" type="submit" value="Login">
-    </form>
+          <mat-form-field>
+            <mat-icon matPrefix>lock_outline</mat-icon>
+            <input type="password" autocomplete="false" matInput placeholder="Password" formControlName="Password">
+          </mat-form-field>
+
+          <button type="submit" mat-raised-button color="primary">Iniciar sesión</button>
+        </form>
+
+      </mat-card>
+    </div>
   </div>
-  <div class="col-md-4 offset-4 mt-5" *ngIf="this.isLogin">
-
-    <h1>You are logged in</h1>
-
-  </div>
-</div>

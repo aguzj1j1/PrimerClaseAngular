@@ -22,6 +22,10 @@
         <span class="full-width" *ngIf="isExpanded || isShowing" [routerLink]="'/inscripciones'">Inscripciones</span>
         <mat-icon mat-list-icon>edit_note</mat-icon>
       </mat-list-item>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" *ngIf="admin" class="parent">
+        <span class="full-width" *ngIf="isExpanded || isShowing" [routerLink]="'/users'">Usuarios</span>
+        <mat-icon mat-list-icon>person</mat-icon>
+      </mat-list-item>
     </mat-nav-list>
     <mat-nav-list> </mat-nav-list>
   </mat-sidenav>

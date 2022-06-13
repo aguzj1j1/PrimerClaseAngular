@@ -1,0 +1,39 @@
+<div class="demo-button-container" [routerLink]="'/users/abm'" *ngIf="admin">
+  <button mat-raised-button class="demo-button">
+    Agregar usuario
+  </button>
+</div>
+<table [dataSource]="users" mat-table>
+  <ng-container matColumnDef="Usuario">
+    <th mat-header-cell *matHeaderCellDef>Usuario</th>
+    <td mat-cell *matCellDef="let user">{{user.username}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Nombre">
+    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+    <td mat-cell *matCellDef="let user">{{user.nombre}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Apellido">
+    <th mat-header-cell *matHeaderCellDef>Apellido</th>
+    <td mat-cell *matCellDef="let user">{{user.apellido}}</td>
+  </ng-container>
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let user">{{user.username}}</td>
+  </ng-container>
+  <ng-container matColumnDef="Admin">
+    <th mat-header-cell *matHeaderCellDef>Admin</th>
+    <td mat-cell *matCellDef="let user ">{{user.admin }}</td>
+  </ng-container>
+  <ng-container *ngIf="admin" matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>actions</th>
+    <td mat-cell *matCellDef="let user ">
+      <button mat-Tooltip="Ver detalles" (click)="goToUserById(user.id)"  type="button" mat-icon-button>
+        <mat-icon> visibility</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

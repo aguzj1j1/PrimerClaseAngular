@@ -1,9 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {
-  MatTable,
-  MatTableDataSource,
-  MatTableModule,
-} from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
+
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Student } from '../models/students.model';

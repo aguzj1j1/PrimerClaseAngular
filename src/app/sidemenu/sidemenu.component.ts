@@ -13,9 +13,14 @@ export class SidemenuComponent implements OnInit {
   showSubmenu: boolean = false;
   isShowing = false;
   showSubSubMenu: boolean = false;
+  auth: any;
+  admin: boolean;
   constructor() { }
 
   ngOnInit(): void {
+    this.auth = localStorage.getItem('user');
+    let objeto = JSON.parse(this.auth);
+    this.admin = objeto['admin'];
   }
   mouseenter() {
     if (!this.isExpanded) {
