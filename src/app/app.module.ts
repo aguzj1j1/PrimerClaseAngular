@@ -15,7 +15,6 @@ import { MaterialModule } from './material/material.module';
 import { CursoComponent } from './curso/curso.component';
 import { InscripcionesComponent } from './inscripciones/inscripciones.component';
 import { UsersComponent } from './users/users.component';
-import { ViewUsersComponent } from './view-users/view-users.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { ListUsersComponent } from './list-users/list-users.component';
     CursoComponent,
     InscripcionesComponent,
     UsersComponent,
-    ViewUsersComponent,
     ListUsersComponent
   ],
   imports: [
