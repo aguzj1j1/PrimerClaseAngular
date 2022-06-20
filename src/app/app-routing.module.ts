@@ -9,16 +9,24 @@ import { InscripcionesComponent } from './inscripciones/inscripciones.component'
 import { CursoComponent } from './curso/curso.component';
 import { UsersComponent } from './users/users.component';
 import { ListUsersComponent } from './list-users/list-users.component';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
 const routes: Routes = [
   {
     path: '',
     component: SidemenuComponent,
+    canActivate:[AuthGuardGuard],
     children: [
       { path: 'students', component: ListStudentsComponent },
       { path: 'students/view/:id', component: ViewStudentsComponent },
       { path: 'course', component: CursoComponent },
       { path: 'inscripciones', component: InscripcionesComponent },
-      { path: 'users', component: ListUsersComponent },
+      {
+        path: 'users',
+        loadChildren: () =>
+          import('./list-users/list-users/list-users.module').then(
+            (x) => x.ListUsersModule
+          ),
+      },
       { path: 'users/abm', component: UsersComponent },
       { path: 'users/abm/:id', component: UsersComponent },
     ],

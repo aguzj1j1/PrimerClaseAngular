@@ -19,15 +19,17 @@ export class ListUsersComponent implements OnInit {
   @ViewChild(MatTable) tabla1: MatTable<any>;
   dataSource: MatTableDataSource<UserAuth>;
   constructor(private user: UserService,private route: Router) {
-    this.auth = localStorage.getItem('user');
-    let objeto = JSON.parse(this.auth);
-    this.admin = objeto['admin'];
-    if (this.admin) {
-      this.displayedColumns.push('actions');
-    }
+
    }
 
   ngOnInit(): void {
+    this.auth = localStorage.getItem('user');
+    let objeto = JSON.parse(this.auth);
+    this.admin = objeto[0]['admin'];
+    debugger;
+    if (this.admin) {
+      this.displayedColumns.push('actions');
+    }
     this.subscriptions = new Subscription();
     this.subscriptions.add(
       this.user.getUsers().subscribe((val) => {

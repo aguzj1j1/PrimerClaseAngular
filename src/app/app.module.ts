@@ -17,6 +17,7 @@ import { InscripcionesComponent } from './inscripciones/inscripciones.component'
 import { UsersComponent } from './users/users.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './services/users.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,HttpClientModule
     ],
   exports:[SidemenuComponent,MaterialModule,HttpClientModule ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
