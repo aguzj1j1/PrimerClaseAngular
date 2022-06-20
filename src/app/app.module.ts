@@ -16,6 +16,7 @@ import { CursoComponent } from './curso/curso.component';
 import { InscripcionesComponent } from './inscripciones/inscripciones.component';
 import { UsersComponent } from './users/users.component';
 import { ListUsersComponent } from './list-users/list-users.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,9 +37,9 @@ import { ListUsersComponent } from './list-users/list-users.component';
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,HttpClientModule
     ],
-  exports:[SidemenuComponent,MaterialModule ],
+  exports:[SidemenuComponent,MaterialModule,HttpClientModule ],
   providers: [],
   bootstrap: [AppComponent]
 })

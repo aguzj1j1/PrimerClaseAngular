@@ -35,30 +35,22 @@ export class AuthComponent implements OnInit {
     );
   }
 
-  onSubmit() {
-    if (
-      this.checkIsUser(
-        this.formLogin.get('Username')?.value,
-        this.formLogin.get('Password')?.value
-      )
-    ) {
-      localStorage.setItem('user', JSON.stringify(this.ActualUser[0]));
-      this.route.navigate(['/students']);
-    }
+   onSubmit() {
+
+    this.userService.getListUser().subscribe((val) => {
+
+      let value = val.filter(data => data.username === this.formLogin.get('Username')?.value  && data.password===this.formLogin.get('Password')?.value);
+      if(value.length>0){
+          this.ActualUser = value;
+          this.userService.setLogged();
+          localStorage.setItem('user', JSON.stringify(this.ActualUser));
+          this.route.navigate(['/students']);
+      }
+    });
   }
   isUserLogin() {
     console.log(localStorage.getItem('user'));
   }
-  checkIsUser(userName: string, password: string): boolean {
-    this.userService.getListUser(userName, password).subscribe((val) => {
-      this.ActualUser = val;
-    });
-    if (this.ActualUser.length > 0) {
-      return true;
-    }
-    return false;
-  }
-
   checkIsUserWithPromise(userName: string, password: string): boolean {
     this.userService.getListUserPromise(userName, password).then((val) => {
       this.ActualUser = val;
