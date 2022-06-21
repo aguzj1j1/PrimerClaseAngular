@@ -26,9 +26,7 @@ const routes: Routes = [
           import('./list-users/list-users/list-users.module').then(
             (x) => x.ListUsersModule
           ),
-      },
-      { path: 'users/abm', component: UsersComponent },
-      { path: 'users/abm/:id', component: UsersComponent },
+      }
     ],
   },
   { path: 'auth', component: AuthComponent },
