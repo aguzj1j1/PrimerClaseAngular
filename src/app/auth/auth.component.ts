@@ -40,8 +40,6 @@ export class AuthComponent implements OnInit {
   }
 
    onSubmit() {
-    this.store.dispatch(login({prueba:"hola"}))
-
     this.userService.getListUser().subscribe((val) => {
 
       let value = val.filter(data => data.username === this.formLogin.get('Username')?.value  && data.password===this.formLogin.get('Password')?.value);
@@ -69,7 +67,5 @@ export class AuthComponent implements OnInit {
     return false;
   }
 }
-function login(arg0: { prueba: string; }): any {
-  throw new Error('Function not implemented.');
-}
+
 
