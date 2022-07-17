@@ -23,8 +23,9 @@ export class InscripcionesComponent implements OnInit {
   dataSource: MatTableDataSource<Inscription>;
   constructor(private inscription: InscriptionService,private route: Router) {
     this.auth = localStorage.getItem('user');
+    debugger;
     let objeto = JSON.parse(this.auth);
-    this.admin = objeto['admin'];
+    this.admin = objeto[0]['admin'];
     if (this.admin) {
       this.displayedColumns.push('actions');
     }

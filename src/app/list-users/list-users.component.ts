@@ -36,6 +36,7 @@ export class ListUsersComponent implements OnInit {
         this.users = val;
       })
     );
+    this.user.getUserName();
     this.dataSource = new MatTableDataSource<UserAuth>(this.users);
   }
 

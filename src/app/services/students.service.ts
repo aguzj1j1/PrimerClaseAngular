@@ -49,5 +49,21 @@ export class StudentsService {
   getStudents(): Observable<Student[]>{
     return of(this.students)
   }
+  getStudentsById(id: Number): Observable<Student> {
+    return of(this.students.filter((us) => us.id == id)[0]);
+  }
+  updateStudent(student: Student): Observable<Student[]> {
+    debugger;
+    this.students[this.students.findIndex((i) => (i.email = student.email))] = student;
+    return of(this.students);
+  }
+  addStudent(student: Student): Observable<Student[]> {
+    this.students.push(student);
+    return of(this.students);
+  }
+  deleteStudent(id :number): Observable<Student[]> {
+    this.students = this.students.filter(actual => actual.id != id);
+    return of(this.students);
+  }
 
 }

@@ -3,6 +3,8 @@
     <mat-icon>menu</mat-icon>
   </button>
   <h1 class="custom-app-name text-center">CoderHouse BackOffice</h1>
+  <h1 class="custom-app-name margin-left-20">{{listeningUser()}}</h1>
+  <h1 class="custom-app-name margin-left-20">{{listeningComponente()}}</h1>
 </mat-toolbar>
 
 <mat-sidenav-container class="custom-container" autosize>
@@ -26,10 +28,15 @@
         <span class="full-width" *ngIf="isExpanded || isShowing" [routerLink]="'/users'">Usuarios</span>
         <mat-icon mat-list-icon>person</mat-icon>
       </mat-list-item>
+      <mat-list-item (click)="logOut()" *ngIf="admin" class="parent cerrar-sesion">
+        <span class="full-width" *ngIf="isExpanded || isShowing" >Cerrar sesión</span>
+        <mat-icon mat-list-icon>logout</mat-icon>
+      </mat-list-item>
     </mat-nav-list>
-    <mat-nav-list> </mat-nav-list>
+
   </mat-sidenav>
 
-  <div class="custom-sidenav-content"><router-outlet></router-outlet>
+  <div class="custom-sidenav-content">
+    <router-outlet></router-outlet>
   </div>
 </mat-sidenav-container>

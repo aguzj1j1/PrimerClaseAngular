@@ -1,0 +1,41 @@
+<mat-vertical-stepper #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Datos personales</ng-template>
+      <div class="row">
+        <div class="col-xs-12">
+          <mat-form-field>
+            <input matInput placeholder="Nombre del curso" formControlName="nombre" required>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12">
+          <mat-form-field>
+            <input matInput placeholder="Duracion del curso" formControlName="duracion" required>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12">
+          <mat-form-field>
+            <input matInput placeholder="Profesor" formControlName="profesor" required>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12">
+          <mat-form-field>
+            <input matInput placeholder="Fecha Inicio" formControlName="fechaInicio" required>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div >
+          <button mat-flat-button color="primary" (click)="guardar()">{{labelButton}}</button>
+        </div>
+      </div>
+      <div class="col-xs-6" *ngIf="idCourse">
+        <div >
+          <button mat-flat-button color="warn" (click)="deleteCourse()">Borrar usuario</button>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+
+</mat-vertical-stepper>
+<router-outlet></router-outlet>

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ListStudentsComponent } from './list-students/list-students.component';
 import { AuthComponent } from './auth/auth.component';
-import { ViewStudentsComponent } from './view-students/view-students.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { InscripcionesComponent } from './inscripciones/inscripciones.component';
 import { CursoComponent } from './curso/curso.component';
@@ -16,17 +15,10 @@ const routes: Routes = [
     component: SidemenuComponent,
     canActivate:[AuthGuardGuard],
     children: [
-      { path: 'students', component: ListStudentsComponent },
-      { path: 'students/view/:id', component: ViewStudentsComponent },
-      { path: 'course', component: CursoComponent },
-      { path: 'inscripciones', component: InscripcionesComponent },
-      {
-        path: 'users',
-        loadChildren: () =>
-          import('./list-users/list-users/list-users.module').then(
-            (x) => x.ListUsersModule
-          ),
-      }
+      {path: 'students',loadChildren: () => import('./list-students/students/students.module').then((x) => x.StudentsModule)},
+      {path: 'course', loadChildren: () => import('./curso/curso/curso.module').then((x) => x.CursoModule)},
+      {path: 'inscripciones', loadChildren: () => import('./inscripciones/inscripciones/inscripciones.module').then((x) => x.InscripcionesModule)},
+      {path: 'users',loadChildren: () =>import('./list-users/list-users/list-users.module').then((x) => x.ListUsersModule)}
     ],
   },
   { path: 'auth', component: AuthComponent },

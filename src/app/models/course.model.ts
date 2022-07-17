@@ -2,5 +2,6 @@ export interface Course {
   nombre:String;
   duracion:String;
   profesor:String;
-  fechaInicio: String
+  fechaInicio: String,
+  id:number
 }

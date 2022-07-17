@@ -24,16 +24,14 @@ export class UserService {
       apellido: 'prueba2',
     },
   ];
-  url = ' https://demo9641218.mockable.io/'
+  url = ' https://demo9641218.mockable.io/';
   http: any;
   isLogin: boolean = false;
-  constructor(private _httpCliente : HttpClient){
-
-  }
-   getListUser(){
-    return this._httpCliente.get<UserAuth[]>(`${this.url}getAllUsers`)
-     .pipe(catchError(this.handleError));
-
+  constructor(private _httpCliente: HttpClient) {}
+  getListUser() {
+    return this._httpCliente
+      .get<UserAuth[]>(`${this.url}getAllUsers`)
+      .pipe(catchError(this.handleError));
   }
   addUser(user: UserAuth): Observable<UserAuth[]> {
     this.user.push(user);
@@ -54,15 +52,28 @@ export class UserService {
     return of(this.user);
   }
 
-  setLogged(){
-    this.isLogin = true;
-  }
-  setSignOut(){
-    this.isLogin = false;
+  getUserName() {
+    let userLog: any;
+    let userActual = localStorage.getItem('user') || '';
+    userActual = JSON.parse(userActual);
+    for (const iterator of userActual) {
+      userLog = iterator;
+    }
+    return userLog != null ? userLog.username : null;
   }
 
-  getIsLoged():Boolean{
-    return this.isLogin;
+  setLogged() {
+    localStorage.setItem('logueado', 'true');
+  }
+  setSignOut() {
+    localStorage.removeItem('logueado');
+    localStorage.removeItem('user');
+  }
+
+  getIsLoged(): Boolean {
+    let logeado: boolean =
+      localStorage.getItem('logueado') === 'true' ? true : false;
+    return logeado;
   }
 
   getListUserPromise(username: string, password: string): Promise<any> {
@@ -85,9 +96,11 @@ export class UserService {
     });
   }
 
-  private handleError(error: HttpErrorResponse){
-    if(error){
-      console.warn(`Error de backend tipo ${error.status} con el mensaje de ${error.message}`)
+  private handleError(error: HttpErrorResponse) {
+    if (error) {
+      console.warn(
+        `Error de backend tipo ${error.status} con el mensaje de ${error.message}`
+      );
     }
     return throwError('Error de comunicacion http');
   }

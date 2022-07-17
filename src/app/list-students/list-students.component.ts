@@ -13,7 +13,7 @@ import { StudentsService } from '../services/students.service';
 export class ListStudentsComponent  implements OnInit {
   auth: any;
   displayedColumns: string[] = ['name', 'note', 'course', 'email', 'aprobado'];
-  admin: boolean;
+  admin: boolean = false;
   subscriptions: Subscription;
   students: any;
   @ViewChild(MatTable) tabla1: MatTable<any>;
@@ -21,12 +21,14 @@ export class ListStudentsComponent  implements OnInit {
   constructor(private route: Router, private student: StudentsService) {
     this.auth = localStorage.getItem('user');
     let objeto = JSON.parse(this.auth);
-    this.admin = objeto['admin'];
+    this.admin = objeto[0]['admin'];
+    debugger;
     if (this.admin) {
       this.displayedColumns.push('actions');
     }
   }
   goToViewStudent(id: number): void {
+    debugger;
     this.route.navigate(['/students/view/', id]);
   }
   ngOnInit(): void {
@@ -42,5 +44,8 @@ export class ListStudentsComponent  implements OnInit {
     if (this.subscriptions) {
       this.subscriptions.unsubscribe();
     }
+  }
+  addStudent(){
+    this.route.navigate(['/students/view']);
   }
 }

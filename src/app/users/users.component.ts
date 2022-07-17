@@ -78,7 +78,6 @@ export class UsersComponent implements OnInit {
     }
   }
   deleteUser(){
-    debugger;
     this.userService.deleteUser(this.idUser);
   }
   getUserById(id: Number) {

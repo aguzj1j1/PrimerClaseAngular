@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Course } from '../models/course.model';
 import { CourseService } from '../services/course.service';
@@ -22,10 +23,11 @@ export class CursoComponent implements OnInit {
   course: any;
   @ViewChild(MatTable) tabla1: MatTable<any>;
   dataSource: MatTableDataSource<Course>;
-  constructor(private _course :CourseService) {
+  constructor(private route: Router,private _course :CourseService) {
     this.auth = localStorage.getItem('user');
+    debugger;
     let objeto = JSON.parse(this.auth);
-    this.admin = objeto['admin'];
+    this.admin = objeto[0]['admin'];
     if (this.admin) {
       this.displayedColumns.push('actions');
     }
@@ -39,5 +41,8 @@ export class CursoComponent implements OnInit {
       })
     );
     this.dataSource = new MatTableDataSource<Course>(this.course);
+  }
+  goToCourse(id:number){
+    this.route.navigate(['/course/view/', id]);
   }
 }

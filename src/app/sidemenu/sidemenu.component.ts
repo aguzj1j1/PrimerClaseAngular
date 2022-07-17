@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
+import { UserService } from '../services/users.service';
 @Component({
   selector: 'app-sidemenu',
   templateUrl: './sidemenu.component.html',
@@ -15,7 +17,8 @@ export class SidemenuComponent implements OnInit {
   showSubSubMenu: boolean = false;
   auth: any;
   admin: boolean;
-  constructor() { }
+  userActual :string;
+  constructor(private _auth : UserService,private _route :Router) { }
 
   ngOnInit(): void {
     this.auth = localStorage.getItem('user');
@@ -32,5 +35,15 @@ export class SidemenuComponent implements OnInit {
     if (!this.isExpanded) {
       this.isShowing = false;
     }
+  }
+  listeningUser(){
+    return this._auth.getUserName();
+  }
+  listeningComponente(){
+    return document.location.pathname;
+  }
+  logOut(){
+    this._auth.setSignOut();
+    this._route.navigate(['/auth']);
   }
 }

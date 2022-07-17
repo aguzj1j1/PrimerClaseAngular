@@ -4,6 +4,9 @@ import { UserService } from '../services/users.service';
 import { UserAuth } from '../models/users.model';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { Store } from '@ngrx/store';
+
+import { loadFeatureLoginsSuccess } from '../store/login/login.actions';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -18,7 +21,8 @@ export class AuthComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private route: Router
+    private route: Router,
+    private store : Store<any>
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +40,7 @@ export class AuthComponent implements OnInit {
   }
 
    onSubmit() {
+    this.store.dispatch(login({prueba:"hola"}))
 
     this.userService.getListUser().subscribe((val) => {
 
@@ -44,7 +49,9 @@ export class AuthComponent implements OnInit {
           this.ActualUser = value;
           this.userService.setLogged();
           localStorage.setItem('user', JSON.stringify(this.ActualUser));
+          this.store.dispatch(loadFeatureLoginsSuccess({user:this.ActualUser[0]}))
           this.route.navigate(['/students']);
+
       }
     });
   }
@@ -62,3 +69,7 @@ export class AuthComponent implements OnInit {
     return false;
   }
 }
+function login(arg0: { prueba: string; }): any {
+  throw new Error('Function not implemented.');
+}
+

@@ -18,6 +18,10 @@ import { UsersComponent } from './users/users.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/users.service';
+import { StoreModule } from '@ngrx/store';
+import { AlumnosComponent } from './alumnos/alumnos.component';
+import { CursoAbmComponent } from './curso-abm/curso-abm.component';
+import { EffectsModule } from '@ngrx/effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +34,9 @@ import { UserService } from './services/users.service';
     CursoComponent,
     InscripcionesComponent,
     UsersComponent,
-    ListUsersComponent
+    ListUsersComponent,
+    AlumnosComponent,
+    CursoAbmComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,7 @@ import { UserService } from './services/users.service';
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,HttpClientModule
+    MaterialModule,HttpClientModule, StoreModule.forRoot({}, {}), EffectsModule.forRoot([])
     ],
   exports:[SidemenuComponent,MaterialModule,HttpClientModule ],
   providers: [UserService],
